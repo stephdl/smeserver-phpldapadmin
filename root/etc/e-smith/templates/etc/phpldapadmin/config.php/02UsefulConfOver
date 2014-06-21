@@ -1,0 +1,60 @@
+/*********************************************
+ * Useful important configuration overrides  *
+ *********************************************/
+
+/* If you are asked to put PLA in debug mode, this is how you do it: */
+#  $config->custom->debug['level'] = 255;
+#  $config->custom->debug['syslog'] = true;
+#  $config->custom->debug['file'] = '/tmp/pla_debug.log';
+
+/* phpLDAPadmin can encrypt the content of sensitive cookies if you set this
+   to a big random string. */
+// $config->custom->session['blowfish'] = null;
+
+/* If your auth_type is http, you can override your HTTP Authentication Realm. */
+// $config->custom->session['http_realm'] = sprintf('%s %s',app_name(),'login');
+
+/* The language setting. If you set this to 'auto', phpLDAPadmin will attempt
+   to determine your language automatically.
+   If PLA doesnt show (all) strings in your language, then you can do some
+   translation at http://translations.launchpad.net/phpldapadmin and download
+   the translation files, replacing those provided with PLA.
+   (We'll pick up the translations before making the next release too!) */
+// $config->custom->appearance['language'] = 'auto';
+
+/* The temporary storage directory where we will put jpegPhoto data
+   This directory must be readable and writable by your web server. */
+// $config->custom->jpeg['tmpdir'] = '/tmp';     // Example for Unix systems
+#  $config->custom->jpeg['tmpdir'] = 'c:\\temp'; // Example for Windows systems
+
+/* Set this to (bool)true if you do NOT want a random salt used when
+   calling crypt().  Instead, use the first two letters of the user's
+   password.  This is insecure but unfortunately needed for some older
+   environments. */
+#  $config->custom->password['no_random_crypt_salt'] = true;
+
+/* PHP script timeout control. If php runs longer than this many seconds then
+   PHP will stop with an Maximum Execution time error. Increase this value from
+   the default if queries to your LDAP server are slow. The default is either
+   30 seconds or the setting of max_exection_time if this is null. */
+// $config->custom->session['timelimit'] = 30;
+
+// $config->custom->appearance['show_clear_password'] = false;
+
+// $config->custom->search['size_limit'] = 50;
+#  $config->custom->search['size_limit'] = 1000;
+
+/* Our local timezone
+   This is to make sure that when we ask the system for the current time, we
+   get the right local time. If this is not set, all time() calculations will
+   assume UTC if you have not set PHP date.timezone. */
+// $config->custom->appearance['timezone'] = null;
+#  $config->custom->appearance['timezone'] = 'Australia/Melbourne';
+
+/*   meaning that users will not be presented a form for modifying those
+   attributes, and they will not be allowed to be modified on the "back-end"
+   either. You may configure this list here:
+   NOTE: The user must be able to read the readonly_attrs_exempt entry to be
+   excluded. */
+// $config->custom->appearance['readonly_attrs'] = array();
+

@@ -1,0 +1,38 @@
+
+/** NOTE **
+ ** Make sure that <?php is the FIRST line of this file!
+ ** IE: There should NOT be any blank lines or spaces BEFORE <?php
+ **/
+
+/**
+ * The phpLDAPadmin config file
+ * See: http://phpldapadmin.sourceforge.net/wiki/index.php/Config.php
+ *
+ * This is where you can customise some of the phpLDAPadmin defaults
+ * that are defined in config_default.php.
+ *
+ * To override a default, use the $config->custom variable to do so.
+ * For example, the default for defining the language in config_default.php
+ *
+ * $this->default->appearance['language'] = array(
+ *  'desc'=>'Language',
+ *  'default'=>'auto');
+ *
+ * to override this, use $config->custom->appearance['language'] = 'en_EN';
+ *
+ * This file is also used to configure your LDAP server connections.
+ *
+ * You must specify at least one LDAP server there. You may add
+ * as many as you like. You can also specify your language, and
+ * many other options.
+ *
+ * NOTE: Commented out values in this file prefixed by //, represent the
+ * defaults that have been defined in config_default.php.
+ * Commented out values prefixed by #, dont reflect their default value, you can
+ * check config_default.php if you want to see what the default is.
+ *
+ * DONT change config_default.php, you changes will be lost by the next release
+ * of PLA. Instead change this file - as it will NOT be replaced by a new
+ * version of phpLDAPadmin.
+ */
+

@@ -1,0 +1,49 @@
+
+/*********************************************
+ * Define your LDAP servers in this section  *
+ *********************************************/
+
+$servers = new Datastore();
+$servers->newServer('ldap_pla');
+$servers->setValue('server','name','Local LDAP Server');
+$servers->setValue('server','host','127.0.0.1');
+$servers->setValue('server','port',389);
+
+
+$servers->setValue('server','tls',false);
+
+{
+    open (PW, "/etc/openldap/ldap.pw")
+        || die "Could not read LDAP password.\n";
+    my $pw = <PW>;
+    chomp ($pw);
+    close PW;
+    my $kamikaze = $phpldapadmin{'kamikaze'} || 'disabled';
+
+    use esmith::util;
+
+    my %conf;
+    tie %conf, 'esmith::config', '/home/e-smith/db/configuration';
+
+    my $domain = db_get(\%conf, 'DomainName');
+
+    my $dc = esmith::util::ldapBase($domain);
+    if ( $kamikaze eq "enabled")
+	{
+	$OUT .= "\$servers->setValue('login','anon_bind',false);\n";
+    	$OUT .= "\$servers->setValue('server','base',array('$dc'));\n";
+    	$OUT .= "\$servers->setValue('login','base',array('$dc'));\n";
+    	$OUT .= "\$servers->setValue('login','auth_type','config');\n";
+    	$OUT .= "\$servers->SetValue('login','bind_id','cn=root,$dc');\n";
+    	$OUT .= "\$servers->setValue('login','bind_pass','$pw');\n";
+	$OUT .= "\$servers->setValue('login','attr','dn');\n";
+	}
+     else
+	{
+	$OUT .= "\$servers->setValue('login','anon_bind',true);\n";
+        $OUT .= "\$servers->setValue('server','base',array('$dc'));\n";
+        $OUT .= "\$servers->setValue('login','base',array('$dc'));\n";
+        $OUT .= "\$servers->setValue('login','auth_type','http');\n";
+        $OUT .= "\$servers->setValue('login','attr','uid');\n";
+	}
+}

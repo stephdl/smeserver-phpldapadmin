@@ -1,0 +1,15 @@
+#!/usr/bin/perl -w
+# This script creates the symlinks needed by this RPM
+# Specific support exists to create symlinks within e-smith web "panels"
+# and for links from named "events" directories into the "actions" directory
+
+use esmith::Build::CreateLinks qw(:all);
+
+for my $event (qw(
+    bootstrap-console-save
+    post-upgrade	
+    ))
+{
+    templates2events("/etc/phpldapadmin/config.php", $event)
+}
+safe_symlink("/etc/e-smith/templates-default/template-begin-php", "root/etc/e-smith/templates/etc/phpldapadmin/config.php/template-begin");

@@ -1,0 +1,130 @@
+
+/*********************************************
+ * Appearance                                *
+ *********************************************/
+
+/* If you want to choose the appearance of the tree, specify a class name which
+   inherits from the Tree class. */
+// $config->custom->appearance['tree'] = 'AJAXTree';
+#  $config->custom->appearance['tree'] = 'HTMLTree';
+
+/* Just show your custom templates. */
+// $config->custom->appearance['custom_templates_only'] = false;
+
+/* Disable the default template. */
+// $config->custom->appearance['disable_default_template'] = false;
+
+/* Hide the warnings for invalid objectClasses/attributes in templates. */
+// $config->custom->appearance['hide_template_warning'] = false;
+
+/* Set to true if you would like to hide header and footer parts. */
+// $config->custom->appearance['minimalMode'] = false;
+
+/* Configure what objects are shown in left hand tree */
+// $config->custom->appearance['tree_filter'] = '(objectclass=*)';
+
+/* The height and width of the tree. If these values are not set, then
+   no tree scroll bars are provided. */
+// $config->custom->appearance['tree_height'] = null;
+#  $config->custom->appearance['tree_height'] = 600;
+// $config->custom->appearance['tree_width'] = null;
+#  $config->custom->appearance['tree_width'] = 250;
+
+/* Confirm create and update operations, allowing you to review the changes
+   and optionally skip attributes during the create/update operation. */
+// $config->custom->confirm['create'] = true;
+// $config->custom->confirm['update'] = true;
+
+/* Confirm copy operations, and treat them like create operations. This allows
+   you to edit the attributes (thus changing any that might conflict with
+   uniqueness) before creating the new entry. */
+// $config->custom->confirm['copy'] = true;
+
+/*********************************************
+ * User-friendly attribute translation       *
+ *********************************************/
+
+/* Use this array to map attribute names to user friendly names. For example, if
+   you don't want to see "facsimileTelephoneNumber" but rather "Fax". */
+// $config->custom->appearance['friendly_attrs'] = array();
+$config->custom->appearance['friendly_attrs'] = array(
+	'facsimileTelephoneNumber' => 'Fax',
+	'gid'                      => 'Group',
+	'mail'                     => 'Email',
+	'telephoneNumber'          => 'Telephone',
+	'uid'                      => 'User Name',
+	'userPassword'             => 'Password'
+);
+
+/*********************************************
+ * Hidden attributes                         *
+ *********************************************/
+
+/* You may want to hide certain attributes from being edited. If you want to
+   hide attributes from the user, you should use your LDAP servers ACLs.
+   NOTE: The user must be able to read the hide_attrs_exempt entry to be
+   excluded. */
+// $config->custom->appearance['hide_attrs'] = array();
+#  $config->custom->appearance['hide_attrs'] = array('objectClass');
+
+/* Members of this list will be exempt from the hidden attributes. */
+// $config->custom->appearance['hide_attrs_exempt'] = null;
+#  $config->custom->appearance['hide_attrs_exempt'] = 'cn=PLA UnHide,ou=Groups,c=AU';
+
+/*********************************************
+ * Read-only attributes                      *
+ *********************************************/
+
+/* You may want to phpLDAPadmin to display certain attributes as read only,
+   meaning that users will not be presented a form for modifying those
+   attributes, and they will not be allowed to be modified on the "back-end"
+   either. You may configure this list here:
+   NOTE: The user must be able to read the readonly_attrs_exempt entry to be
+   excluded. */
+// $config->custom->appearance['readonly_attrs'] = array();
+
+/* Members of this list will be exempt from the readonly attributes. */
+// $config->custom->appearance['readonly_attrs_exempt'] = null;
+#  $config->custom->appearance['readonly_attrs_exempt'] = 'cn=PLA ReadWrite,ou=Groups,c=AU';
+
+/*********************************************
+ * Group attributes                          *
+ *********************************************/
+
+/* Add "modify group members" link to the attribute. */
+// $config->custom->modify_member['groupattr'] = array('member','uniqueMember','memberUid');
+
+/* Configure filter for member search. This only applies to "modify group members" feature */
+// $config->custom->modify_member['filter'] = '(objectclass=Person)';
+
+/* Attribute that is added to the group member attribute. */
+// $config->custom->modify_member['attr'] = 'dn';
+
+/* For Posix attributes */
+// $config->custom->modify_member['posixattr'] = 'uid';
+// $config->custom->modify_member['posixfilter'] = '(uid=*)';
+// $config->custom->modify_member['posixgroupattr'] = 'memberUid';
+
+/*********************************************
+ * Support for attrs display order           *
+ *********************************************/
+
+/* Use this array if you want to have your attributes displayed in a specific
+   order. You can use default attribute names or their fridenly names.
+   For example, "sn" will be displayed right after "givenName". All the other
+   attributes that are not specified in this array will be displayed after in
+   alphabetical order. */
+// $config->custom->appearance['attr_display_order'] = array();
+#  $config->custom->appearance['attr_display_order'] = array(
+#   'givenName',
+#   'sn',
+#   'cn',
+#   'displayName',
+#   'uid',
+#   'uidNumber',
+#   'gidNumber',
+#   'homeDirectory',
+#   'mail',
+#   'userPassword'
+#  );
+

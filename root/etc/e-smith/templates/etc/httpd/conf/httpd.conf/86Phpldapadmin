@@ -1,0 +1,27 @@
+
+# Administration: phpldapadmin
+<Directory /usr/share/phpldapadmin>
+    SSLRequireSSL on
+    Options -Indexes
+    AllowOverride None
+    order deny,allow
+    deny from all
+{
+    my $phpldapadminaxs = $phpldapadmin{'access'} || "private";
+    if ($phpldapadminaxs eq "private")
+    {
+        $OUT .= "    allow from $localAccess $externalSSLAccess";
+    } else {
+        $OUT .= "    allow from all";
+    }
+}
+    AuthName "phpLdapAdmin"
+    AuthType Basic
+    AuthExternal pwauth
+    require user admin
+    Satisfy all
+    AddType application/x-httpd-php .php .php3
+    php_flag  magic_quotes_gpc  on
+    php_flag  track_vars        on
+</Directory>
+

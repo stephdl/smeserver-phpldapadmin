@@ -1,0 +1,9 @@
+{
+
+    if ($port eq "80") 
+    {
+        $OUT = '    RewriteRule ^/phpldapadmin(/.*|$)    https://%{HTTP_HOST}/phpldapadmin$1 [L,R]';
+    } else {
+        $OUT = '    Alias /phpldapadmin /usr/share/phpldapadmin';
+    }
+}
