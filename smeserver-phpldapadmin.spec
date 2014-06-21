@@ -5,8 +5,8 @@
 Summary: PhpLdapAdmin for SME server
 %define name smeserver-phpldapadmin
 Name: %{name}
-%define version 1.2.3
-%define release 6
+%define version 1.5.0
+%define release 1
 Version: %{version}
 Release: %{release}%{?dist}
 License: Freely distributable
@@ -16,11 +16,14 @@ Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/e-smith-buildroot
 BuildRequires: e-smith-devtools
 BuildArchitectures: noarch
-Requires: smeserver-release >= 8
+Requires: smeserver-release >= 9
 Requires: phpldapadmin >= 1.2.3
 AutoReqProv: no
 
 %changelog
+* Sat Jun 21 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.5.0-1.sme
+- Initial release to sme9
+
 * Wed Nov 6 2013 JP Pialasse <tests@pialasse.com> 1.2.3-6.sme
 - fix bug [SME: 5762]
 - default admin read only but kamikaze mod for root modify access.

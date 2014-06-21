@@ -16,6 +16,7 @@
     }
 }
     AuthName "phpLdapAdmin"
+    AuthBasicProvider external
     AuthType Basic
     AuthExternal pwauth
     require user admin

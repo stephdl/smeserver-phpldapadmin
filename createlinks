@@ -8,6 +8,7 @@ use esmith::Build::CreateLinks qw(:all);
 for my $event (qw(
     bootstrap-console-save
     post-upgrade	
+    console-save
     ))
 {
     templates2events("/etc/phpldapadmin/config.php", $event)
